@@ -1,6 +1,6 @@
 ﻿namespace TimeAndTimePeriod;
 
-public struct TimePeriod
+public struct TimePeriod : IEquatable<TimePeriod>, IComparable<TimePeriod>
 {
     public long TotalSeconds { get; }
 
@@ -50,4 +50,61 @@ public struct TimePeriod
         
         return $"{hours}:{minutes:D2}:{seconds:D2}";
     }
+    
+    #region IEquatable<TimePeriod>
+    public bool Equals(TimePeriod other)
+    {
+        return TotalSeconds == other.TotalSeconds;
+    }
+    
+    public override bool Equals(object? obj)
+    {
+        if (obj is TimePeriod otherPeriod)
+            return Equals(otherPeriod);
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return TotalSeconds.GetHashCode();
+    }
+    
+    public static bool operator ==(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.Equals(period2);
+    }
+
+    public static bool operator !=(TimePeriod period1, TimePeriod period2)
+    {
+        return !period1.Equals(period2);
+    }
+    #endregion
+    
+    #region IComparable<TimePeriod>
+    public int CompareTo(TimePeriod other)
+    {
+        return TotalSeconds.CompareTo(other.TotalSeconds);
+    }
+    
+    public static bool operator <(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.CompareTo(period2) < 0;
+    }
+
+    public static bool operator <=(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.CompareTo(period2) <= 0;
+    }
+
+    public static bool operator >(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.CompareTo(period2) > 0;
+    }
+
+    public static bool operator >=(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.CompareTo(period2) >= 0;
+    }
+    #endregion
 }
