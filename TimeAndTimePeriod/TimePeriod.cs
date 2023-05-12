@@ -107,4 +107,18 @@ public struct TimePeriod : IEquatable<TimePeriod>, IComparable<TimePeriod>
         return period1.CompareTo(period2) >= 0;
     }
     #endregion
+    
+    public TimePeriod Plus(TimePeriod other)
+    {
+        return new TimePeriod(TotalSeconds + other.TotalSeconds);
+    }
+    public static TimePeriod operator +(TimePeriod period1, TimePeriod period2)
+    {
+        return new TimePeriod(period1.TotalSeconds + period2.TotalSeconds);
+    }
+
+    public static TimePeriod operator -(TimePeriod period1, TimePeriod period2)
+    {
+        return new TimePeriod(period1.TotalSeconds - period2.TotalSeconds);
+    }
 }

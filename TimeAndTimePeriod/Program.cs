@@ -29,13 +29,24 @@ class Program
         Console.WriteLine(time5.ToString());
         Console.WriteLine(time6.ToString());
 
+        var time7 = new Time(23, 59);
+        var timePeriod3 = new TimePeriod(25, 2);
+        Console.WriteLine(time7 + timePeriod3);
+        Console.WriteLine(time7.Plus(timePeriod3));
+
         Console.WriteLine();
         Console.WriteLine("TIME PERIOD:");
 
-        var timePeriod1 = new TimePeriod(1111111, 55, 59);
-        var timePeriod2 = new TimePeriod("141314:55:50");
+        var timePeriod1 = new TimePeriod(100, 55, 59);
+        var timePeriod2 = new TimePeriod("99:04:1");
         
-        Console.WriteLine(timePeriod1.ToString());
-        Console.WriteLine(timePeriod2.ToString());
+        Console.WriteLine(timePeriod1);
+        Console.WriteLine(timePeriod2);
+
+        Console.WriteLine();
+
+        Console.WriteLine(timePeriod1 + timePeriod2);
+        Console.WriteLine(timePeriod1 - timePeriod2);
+        Console.WriteLine(timePeriod1.Plus(timePeriod2));
     }
 }

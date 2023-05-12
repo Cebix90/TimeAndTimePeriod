@@ -2,11 +2,11 @@
 
 public struct Time : IEquatable<Time>, IComparable<Time>
 {
-    public int Hours { get; }
+    public byte Hours { get; }
     public byte Minutes { get; }
     public byte Seconds { get; }
 
-    public Time(int hours, byte minutes = 0, byte seconds = 0)
+    public Time(byte hours, byte minutes = 0, byte seconds = 0)
     {
         if (hours >= 24 || minutes >= 60 || seconds >= 60)
             throw new ArgumentException("Invalid time.");
@@ -22,7 +22,7 @@ public struct Time : IEquatable<Time>, IComparable<Time>
         if (parts.Length != 3)
             throw new ArgumentException("Invalid time format.");
 
-        if (!int.TryParse(parts[0], out var hours) || !byte.TryParse(parts[1], out var minutes) ||
+        if (!byte.TryParse(parts[0], out var hours) || !byte.TryParse(parts[1], out var minutes) ||
             !byte.TryParse(parts[2], out var seconds))
         {
             throw new ArgumentException("Invalid time format.");
@@ -98,9 +98,9 @@ public struct Time : IEquatable<Time>, IComparable<Time>
     }
     #endregion
     
-    public static Time operator +(Time time, TimePeriod period)
+    public Time Plus(TimePeriod period)
     {
-        var totalSeconds = time.Hours * 3600 + time.Minutes * 60 + time.Seconds;
+        var totalSeconds = Hours * 3600 + Minutes * 60 + Seconds;
         var newTotalSeconds = (totalSeconds + period.TotalSeconds) % 86400;
         if (newTotalSeconds < 0)
             newTotalSeconds += 86400;
@@ -111,9 +111,10 @@ public struct Time : IEquatable<Time>, IComparable<Time>
 
         return new Time(newHours, newMinutes, newSeconds);
     }
-    
-    /*public Time Plus(TimePeriod period)
+    public static Time operator +(Time time, TimePeriod period)
     {
-        return Plus(this, period);
-    }*/
+        return time.Plus(period);
+    }
+    
+    
 }
