@@ -185,6 +185,41 @@ public class UnitTest1
         // Dodawanie TimePeriod do Time (metoda statyczna)
         var result3 = time1.Plus(period1);
         Assert.Equal(new Time(14, 15, 15), result3);
+    }
+    
+    [Fact]
+    public void TimePeriod_EqualityAndComparison()
+    {
+        var period1 = new TimePeriod(10, 30, 45);
+        var period2 = new TimePeriod(10, 30, 45);
+        var period3 = new TimePeriod(8, 15, 20);
+
+        Assert.True(period1 == period2);
+        Assert.False(period1 != period2);
+        Assert.True(period1.Equals(period2));
+        Assert.Equal(0, period1.CompareTo(period2));
+
+        Assert.False(period1 == period3);
+        Assert.True(period1 != period3);
+        Assert.False(period1.Equals(period3));
+        Assert.True(period1 > period3);
+        Assert.True(period1 >= period3);
+        Assert.False(period1 < period3);
+        Assert.False(period1 <= period3);
+    }
+
+    [Fact]
+    public void TimePeriod_ArithmeticOperations()
+    {
+        var period1 = new TimePeriod(3, 45, 15);
+        var period2 = new TimePeriod(14, 45, 15);
+        var period3 = new TimePeriod(100);
+
+        // Dodawanie TimePeriod
+        var result1 = period1 + period2;
+        var result2 = result1 + period3;
         
+        Assert.Equal(new TimePeriod(18, 30, 30), result1);
+        Assert.Equal(new TimePeriod(118, 30, 30), result2);
     }
 }
