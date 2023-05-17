@@ -1,4 +1,6 @@
-﻿namespace TimeAndTimePeriod;
+﻿using System.Runtime.CompilerServices;
+
+namespace TimeAndTimePeriod;
 
 public struct TimePeriod : IEquatable<TimePeriod>, IComparable<TimePeriod>
 {
@@ -16,39 +18,39 @@ public struct TimePeriod : IEquatable<TimePeriod>, IComparable<TimePeriod>
         if (minutes >= 60 || seconds >= 60)
             throw new ArgumentException("Invalid time.");
         
-        long totalSeconds = hours * 3600L + minutes * 60L + seconds;
+        long timeTotalSeconds = hours * 3600L + minutes * 60L + seconds;
         
-        if(totalSeconds < 0) throw new ArgumentException("Invalid time period");
+        if(timeTotalSeconds < 0) throw new ArgumentException("Invalid time period");
 
-        TotalSeconds = totalSeconds;
+        TotalSeconds = timeTotalSeconds;
     }
     
-    public TimePeriod(string timeString)
+    public TimePeriod(string @string)
     {
-        var parts = timeString.Split(':');
-        if (parts.Length != 3)
+        var timeParts = @string.Split(':');
+        if (timeParts.Length != 3)
             throw new ArgumentException("Invalid time format.");
 
-        if (!int.TryParse(parts[0], out var hours) || !byte.TryParse(parts[1], out var minutes) ||
-            !byte.TryParse(parts[2], out var seconds))
+        if (!int.TryParse(timeParts[0], out var timeHours) || !byte.TryParse(timeParts[1], out var timeMinutes) ||
+            !byte.TryParse(timeParts[2], out var timeSeconds))
         {
             throw new ArgumentException("Invalid time format.");
         }
 
-        long totalSeconds = hours * 3600L + minutes * 60L + seconds;
-        if (totalSeconds < 0)
+        long timeTotalSeconds = timeHours * 3600L + timeMinutes * 60L + timeSeconds;
+        if (timeTotalSeconds < 0)
             throw new ArgumentException("Invalid time period.");
 
-        TotalSeconds = totalSeconds;
+        TotalSeconds = timeTotalSeconds;
     }
     
     public override string ToString()
     {
-        long hours = TotalSeconds / 3600;
-        long minutes = (TotalSeconds / 60) % 60;
-        long seconds = TotalSeconds % 60;
+        long timeHours = TotalSeconds / 3600;
+        long timeMinutes = (TotalSeconds / 60) % 60;
+        long timeSeconds = TotalSeconds % 60;
         
-        return $"{hours}:{minutes:D2}:{seconds:D2}";
+        return $"{timeHours}:{timeMinutes:D2}:{timeSeconds:D2}";
     }
     
     #region IEquatable<TimePeriod>
@@ -59,8 +61,8 @@ public struct TimePeriod : IEquatable<TimePeriod>, IComparable<TimePeriod>
     
     public override bool Equals(object? obj)
     {
-        if (obj is TimePeriod otherPeriod)
-            return Equals(otherPeriod);
+        if (obj is TimePeriod timeOtherPeriod)
+            return Equals(timeOtherPeriod);
 
         return false;
     }
@@ -108,17 +110,35 @@ public struct TimePeriod : IEquatable<TimePeriod>, IComparable<TimePeriod>
     }
     #endregion
     
-    public TimePeriod Plus(TimePeriod other)
+    #region Adding
+    private TimePeriod Adding(TimePeriod period1)
     {
-        return new TimePeriod(TotalSeconds + other.TotalSeconds);
+        return new TimePeriod(TotalSeconds + period1.TotalSeconds);
+    }
+    
+    public static TimePeriod Plus(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.Adding(period2);
     }
     public static TimePeriod operator +(TimePeriod period1, TimePeriod period2)
     {
-        return new TimePeriod(period1.TotalSeconds + period2.TotalSeconds);
+        return Plus(period1, period2);
     }
+    #endregion
 
+    #region Substracting
+    private TimePeriod Substracting(TimePeriod period1)
+    {
+        var substractedTotalSecond = TotalSeconds - period1.TotalSeconds;
+        return substractedTotalSecond > 0 ? new TimePeriod(substractedTotalSecond) : new TimePeriod(0);
+    }
+    public static TimePeriod Minus(TimePeriod period1, TimePeriod period2)
+    {
+        return period1.Substracting(period2);
+    }
     public static TimePeriod operator -(TimePeriod period1, TimePeriod period2)
     {
-        return new TimePeriod(period1.TotalSeconds - period2.TotalSeconds);
+        return Minus(period1, period2);
     }
+    #endregion
 }

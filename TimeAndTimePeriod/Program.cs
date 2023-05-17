@@ -32,7 +32,7 @@ class Program
         var time7 = new Time(23, 59);
         var timePeriod3 = new TimePeriod(25, 2);
         Console.WriteLine(time7 + timePeriod3);
-        Console.WriteLine(time7.Plus(timePeriod3));
+        Console.WriteLine(Time.Plus(time7, timePeriod3));
 
         Console.WriteLine();
         Console.WriteLine("TIME PERIOD:");
@@ -47,6 +47,13 @@ class Program
 
         Console.WriteLine(timePeriod1 + timePeriod2);
         Console.WriteLine(timePeriod1 - timePeriod2);
-        Console.WriteLine(timePeriod1.Plus(timePeriod2));
+        Console.WriteLine(TimePeriod.Plus(timePeriod1, timePeriod2));
+
+        var timePeriod10 = new TimePeriod(23);
+        
+        Console.WriteLine(time1.Minus(timePeriod10));
+        
+        
+        Console.WriteLine(TimePeriod.Minus(timePeriod1,timePeriod10));
     }
 }

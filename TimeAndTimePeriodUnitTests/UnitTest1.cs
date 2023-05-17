@@ -175,16 +175,17 @@ public class UnitTest1
         var period1 = new TimePeriod(3, 45, 15);
         var period2 = new TimePeriod(14, 45, 15);
 
-        // Dodawanie TimePeriod
         var result1 = time1 + period1;
-        Assert.Equal(new Time(14, 15, 15), result1);
-        
         var result2 = time1 + period2;
+        var result3 = Time.Plus(time1, period2);
+        var result4 = Time.Minus(time1, period1);
+        var result5 = time1 - period2;
+        
+        Assert.Equal(new Time(14, 15, 15), result1);
         Assert.Equal(new Time(1, 15, 15), result2);
-
-        // Dodawanie TimePeriod do Time (metoda statyczna)
-        var result3 = time1.Plus(period1);
-        Assert.Equal(new Time(14, 15, 15), result3);
+        Assert.Equal(new Time(1, 15, 15), result3);
+        Assert.Equal(new Time(6,44,45), result4);
+        Assert.Equal(new Time(19,44,45), result5);
     }
     
     [Fact]
@@ -215,11 +216,16 @@ public class UnitTest1
         var period2 = new TimePeriod(14, 45, 15);
         var period3 = new TimePeriod(100);
 
-        // Dodawanie TimePeriod
         var result1 = period1 + period2;
         var result2 = result1 + period3;
+        var result3 = TimePeriod.Plus(result2, period3);
+        var result4 = result3 - result2;
+        var result5 = TimePeriod.Minus(result4, period1);
         
         Assert.Equal(new TimePeriod(18, 30, 30), result1);
         Assert.Equal(new TimePeriod(118, 30, 30), result2);
+        Assert.Equal(new TimePeriod(218, 30, 30), result3);
+        Assert.Equal(new TimePeriod(100), result4);
+        Assert.Equal(new TimePeriod(96, 14, 45), result5);
     }
 }
