@@ -1,8 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeAndTimePeriod", "TimeAndTimePeriod\TimeAndTimePeriod.csproj", "{64D573B2-ABF2-4FF2-9859-8B12250E1299}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeAndTimePeriod", "TimeAndTimePeriod\TimeAndTimePeriod.csproj", "{64D573B2-ABF2-4FF2-9859-8B12250E1299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeAndTimePeriodUnitTests", "TimeAndTimePeriodUnitTests\TimeAndTimePeriodUnitTests.csproj", "{2AF02736-F759-4C5A-A9A1-78B90C4AFE9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeAndTimePeriodUnitTests", "TimeAndTimePeriodUnitTests\TimeAndTimePeriodUnitTests.csproj", "{2AF02736-F759-4C5A-A9A1-78B90C4AFE9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeAndTimePeriodApp", "TimeAndTimePeriodApp\TimeAndTimePeriodApp.csproj", "{36682D15-4F57-4EA8-8879-17A37ADCC4F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,15 @@ Global
 		{2AF02736-F759-4C5A-A9A1-78B90C4AFE9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AF02736-F759-4C5A-A9A1-78B90C4AFE9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AF02736-F759-4C5A-A9A1-78B90C4AFE9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36682D15-4F57-4EA8-8879-17A37ADCC4F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36682D15-4F57-4EA8-8879-17A37ADCC4F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36682D15-4F57-4EA8-8879-17A37ADCC4F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36682D15-4F57-4EA8-8879-17A37ADCC4F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E85DC864-CBFC-4082-8E9E-DD9D3277C897}
 	EndGlobalSection
 EndGlobal

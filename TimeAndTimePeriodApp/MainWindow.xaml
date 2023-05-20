@@ -1,0 +1,138 @@
+﻿<Window x:Class="TimeAndTimePeriodApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TimeAndTimePeriodApp"
+        mc:Ignorable="d"
+        Title="TimeAndTimePeriodApp" Height="310" Width="650">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryBlueColor" Color="DarkBlue"/>
+        <SolidColorBrush x:Key="SecondaryBlueColor" Color="#EFF2FF"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#FFFFFF"/>
+        <SolidColorBrush x:Key="SecondaryTextColor" Color="DarkBlue"/>
+        <SolidColorBrush x:Key="PrimaryGreyColor" Color="#BBC1D1"/>
+        <SolidColorBrush x:Key="SecondaryGreyColor" Color="White"/>
+        <SolidColorBrush x:Key="ThirdGreyColor" Color="#404040"/>
+
+
+        <Style x:Key="TabItemStyle" TargetType="TabItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{DynamicResource SecondaryTextColor}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
+            <Setter Property="Margin" Value="0 0 0 0"></Setter>
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Padding" Value="0 0 0 0"></Setter>
+            <Setter Property="FontWeight" Value="Bold"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="TabItem">
+                        <Grid SnapsToDevicePixels="True">
+                            <Border CornerRadius="20"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    Margin="{TemplateBinding Margin}"></Border>
+                            <ContentPresenter x:Name="contentPresenter"
+                                                  HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  SnapsToDevicePixels="True"
+                                                  RecognizesAccessKey="True"
+                                                  Margin="{TemplateBinding Padding}"
+                                                  ContentSource="Header"
+                                                  Focusable="False"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource SecondaryBlueColor}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryGreyColor}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TabControlStyle" TargetType="TabControl"></Style>
+
+    </Window.Resources>
+
+    <Grid Background="{DynamicResource SecondaryGreyColor}">
+        <TabControl Width="600" Height="280" TabStripPlacement="Right">
+            <TabItem Header="CLOCK" Style="{DynamicResource TabItemStyle}">
+                <Grid Background="{DynamicResource SecondaryGreyColor}">
+                    <TextBlock Text="" Name="clock"
+                           Foreground="{DynamicResource SecondaryTextColor}"
+                           FontSize="100"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Text="" Name="DateInClock"
+                           Foreground="{DynamicResource SecondaryTextColor}"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           VerticalAlignment="top"
+                           Margin="5 5 5 5"
+                           HorizontalAlignment="Center"></TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="TIMER" Style="{DynamicResource TabItemStyle}" VerticalAlignment="Top">
+                <TabItem.Resources>
+                    <Style x:Key="RoundedButtonStyle" TargetType="Button">
+                        <Setter Property="Background" Value="{DynamicResource PrimaryBlueColor}" />
+                        <Setter Property="Foreground" Value="{DynamicResource PrimaryTextColor}" />
+                        <Setter Property="FontSize" Value="20" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="VerticalAlignment" Value="Bottom" />
+                        <Setter Property="Margin" Value="20 0 0 30" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                        <Setter Property="Width" Value="150" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            CornerRadius="30">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabItem.Resources>
+                <Grid Background="{DynamicResource SecondaryGreyColor}">
+                    <TextBlock Text="00:00:00" Name="TimerDisplay"
+                               Foreground="{DynamicResource SecondaryTextColor}"
+                               FontSize="80"
+                               FontWeight="Bold"
+                               VerticalAlignment="Top"
+                               Margin="120,50,0,0" 
+                               RenderTransformOrigin="0.5,0.5"/>
+                    <Button Content="START" Name="startstop"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            Click="startstop_Click" />
+                    <Button Content="RESET"
+                            Style="{StaticResource RoundedButtonStyle}"
+                            VerticalAlignment="Bottom"
+                            Margin="0,0,20,30"
+                            HorizontalAlignment="Right"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            Click="reset_Click" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

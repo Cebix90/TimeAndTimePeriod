@@ -11,12 +11,26 @@ public class UnitTest1
         Assert.Equal(expectedMinutes, time.Minutes);
         Assert.Equal(expectedSeconds, time.Seconds);
     }
-    
+
+    private void AssertTime(Time time, byte expectedHours, byte expectedMinutes, byte expectedSeconds, int expectedMilliseconds)
+    {
+        Assert.Equal(expectedHours, time.Hours);
+        Assert.Equal(expectedMinutes, time.Minutes);
+        Assert.Equal(expectedSeconds, time.Seconds);
+        Assert.Equal(expectedMilliseconds, time.Milliseconds);
+    }
+
     private void AssertTimePeriod(TimePeriod period, long expectedTotalSeconds)
     {
         Assert.Equal(expectedTotalSeconds, period.TotalSeconds);
     }
-    
+
+    private void AssertTimePeriod(TimePeriod timePeriod, long expectedTotalSeconds, int expectedMilliseconds)
+    {
+        Assert.Equal(expectedTotalSeconds, timePeriod.TotalSeconds);
+        Assert.Equal(expectedMilliseconds, timePeriod.Milliseconds);
+    }
+
     [Theory]
     [InlineData(5, 55, 55,
         5, 55, 55)]
@@ -29,7 +43,7 @@ public class UnitTest1
 
         AssertTime(time, expectedA, expectedB, expectedC);
     }
-    
+
     [Theory]
     [InlineData(5, 55,
         5, 55, 0)]
@@ -42,7 +56,7 @@ public class UnitTest1
 
         AssertTime(time, expectedA, expectedB, expectedC);
     }
-    
+
     [Theory]
     [InlineData(5,
         5, 0, 0)]
@@ -55,7 +69,18 @@ public class UnitTest1
 
         AssertTime(time, expectedA, expectedB, expectedC);
     }
-    
+
+    [Theory]
+    [InlineData(25, 55, 2, 22)]
+    [InlineData(23, 60, 1, 22)]
+    [InlineData(23, 20, 61, 0)]
+    [InlineData(23, 50, 1, 1002)]
+    public void ConstructorTime_InvalidFormat(byte a, byte b, byte c, int d)
+    {
+        var exception = Assert.Throws<ArgumentException>(() => new Time(a, b, c, d));
+        Assert.Equal("Invalid time.", exception.Message);
+    }
+
     [Theory]
     [InlineData("14:55:50",
         14, 55, 50)]
@@ -68,7 +93,18 @@ public class UnitTest1
 
         AssertTime(time, expectedA, expectedB, expectedC);
     }
-    
+
+    [Theory]
+    [InlineData("14:55")]
+    [InlineData("14:55:00:00")]
+    [InlineData("14")]
+    [InlineData("one:two:three")]
+    public void ConstructorTime_String_InvalidFormat(string a)
+    {
+        var exception = Assert.Throws<ArgumentException>(() => new Time(a));
+        Assert.Equal("Invalid time format.", exception.Message);
+    }
+
     [Theory]
     [InlineData(5, 55, 55,
         21355)]
@@ -81,7 +117,7 @@ public class UnitTest1
 
         AssertTimePeriod(timePeriod, expectedA);
     }
-    
+
     [Theory]
     [InlineData(5, 55,
         21300)]
@@ -94,7 +130,7 @@ public class UnitTest1
 
         AssertTimePeriod(timePeriod, expectedA);
     }
-    
+
     [Theory]
     [InlineData(5,
         18000)]
@@ -107,24 +143,48 @@ public class UnitTest1
 
         AssertTimePeriod(timePeriod, expectedA);
     }
-    
+
     [Theory]
-    [InlineData("5:55:55",
-        21355)]
-    [InlineData("2:1:12",
-        7272)]
-    public void ConstructorTimePeriod_String(string a,
-        long expectedA)
+    [InlineData(-1, 55, 2, 22)]
+    [InlineData(23, 60, 1, 22)]
+    [InlineData(23, 20, 61, 0)]
+    [InlineData(23, 50, 1, 1002)]
+    [InlineData(23, 50, 1, -1002)]
+    public void ConstructorTimePeriod_InvalidFormat(int a, byte b, byte c, int d)
+    {
+        var exception = Assert.Throws<ArgumentException>(() => new TimePeriod(a, b, c, d));
+        if (a < 0 || b < 0 || c < 0 || d < 0)
+        Assert.Equal("Invalid time period.", exception.Message);
+        else
+        Assert.Equal("Invalid time.", exception.Message);
+    }
+
+    [Theory]
+    [InlineData("5:55:55:123",
+        21355, 123)]
+    [InlineData("2:1:12:500",
+        7272, 500)]
+    public void ConstructorTimePeriod_String(string a, long expectedTotalSeconds, int expectedMilliseconds)
     {
         var timePeriod = new TimePeriod(a);
 
-        AssertTimePeriod(timePeriod, expectedA);
+        AssertTimePeriod(timePeriod, expectedTotalSeconds, expectedMilliseconds);
     }
-    
+
     [Theory]
-    [InlineData(5,55,55,
+    [InlineData("14:55")]
+    [InlineData("14")]
+    [InlineData("one:two:three")]
+    public void ConstructorTimePeriod_String_InvalidFormat(string a)
+    {
+        var exception = Assert.Throws<ArgumentException>(() => new TimePeriod(a));
+        Assert.Equal("Invalid time format.", exception.Message);
+    }
+
+    [Theory]
+    [InlineData(5, 55, 55,
         "05:55:55")]
-    [InlineData(2,1,12,
+    [InlineData(2, 1, 12,
         "02:01:12")]
     public void ToString_Time(byte a, byte b, byte c,
         string expectedA)
@@ -133,11 +193,11 @@ public class UnitTest1
 
         Assert.Equal(time.ToString(), expectedA);
     }
-    
+
     [Theory]
-    [InlineData(512,55,55,
+    [InlineData(512, 55, 55,
         "512:55:55")]
-    [InlineData(2,1,12,
+    [InlineData(2, 1, 12,
         "2:01:12")]
     public void ToString_TimePeriod(int a, byte b, byte c,
         string expectedA)
@@ -146,7 +206,7 @@ public class UnitTest1
 
         Assert.Equal(timePeriod.ToString(), expectedA);
     }
-    
+
     [Fact]
     public void Time_EqualityAndComparison()
     {
@@ -180,14 +240,14 @@ public class UnitTest1
         var result3 = Time.Plus(time1, period2);
         var result4 = Time.Minus(time1, period1);
         var result5 = time1 - period2;
-        
+
         Assert.Equal(new Time(14, 15, 15), result1);
         Assert.Equal(new Time(1, 15, 15), result2);
         Assert.Equal(new Time(1, 15, 15), result3);
-        Assert.Equal(new Time(6,44,45), result4);
-        Assert.Equal(new Time(19,44,45), result5);
+        Assert.Equal(new Time(6, 44, 45), result4);
+        Assert.Equal(new Time(19, 44, 45), result5);
     }
-    
+
     [Fact]
     public void TimePeriod_EqualityAndComparison()
     {
@@ -221,7 +281,7 @@ public class UnitTest1
         var result3 = TimePeriod.Plus(result2, period3);
         var result4 = result3 - result2;
         var result5 = TimePeriod.Minus(result4, period1);
-        
+
         Assert.Equal(new TimePeriod(18, 30, 30), result1);
         Assert.Equal(new TimePeriod(118, 30, 30), result2);
         Assert.Equal(new TimePeriod(218, 30, 30), result3);

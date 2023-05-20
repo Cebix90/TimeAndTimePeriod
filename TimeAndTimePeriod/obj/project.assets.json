@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
+      "projectUniqueName": "C:\\Users\\Mateusz\\Source\\Repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
       "projectName": "TimeAndTimePeriod",
-      "projectPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
+      "projectPath": "C:\\Users\\Mateusz\\Source\\Repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
       "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\obj\\",
+      "outputPath": "C:\\Users\\Mateusz\\Source\\Repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj": {}
+    "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj": {
+    "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj",
+        "projectUniqueName": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj",
         "projectName": "TimeAndTimePeriodUnitTests",
-        "projectPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj",
+        "projectPath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj",
         "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\obj\\",
+        "outputPath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj": {
-                "projectPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj"
+              "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj": {
+                "projectPath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj"
               }
             }
           }
@@ -85,14 +85,14 @@
         }
       }
     },
-    "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj": {
+    "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
+        "projectUniqueName": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
         "projectName": "TimeAndTimePeriod",
-        "projectPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
+        "projectPath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
         "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\obj\\",
+        "outputPath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Mateusz\\AppData\\Roaming\\NuGet\\NuGet.Config",

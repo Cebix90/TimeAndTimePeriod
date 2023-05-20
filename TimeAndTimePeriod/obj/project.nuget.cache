@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "BP8iUZPCLuoJ5HoPDAxW3COkprqq7z4si5Oc72c2xwjvP+77L/OBeXy+LYdk2PAZrKGjqVO6OPZDqaJNQI6Qvg==",
+  "dgSpecHash": "dDfNToG4pTt1tJWI1Fx2Zati0y8HJd5BGlIhTlOmKxUfBk32oYJMyn2P9Q1xIQru43TYfhvtIJWtJq6Xl/MFbQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
+  "projectFilePath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriod\\TimeAndTimePeriod.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

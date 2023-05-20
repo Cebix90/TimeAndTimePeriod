@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "TimeAndTimePeriodApp/1.0.0": {
+        "dependencies": {
+          "TimeAndTimePeriod": "1.0.0"
+        },
+        "runtime": {
+          "TimeAndTimePeriodApp.dll": {}
+        }
+      },
+      "TimeAndTimePeriod/1.0.0": {
+        "runtime": {
+          "TimeAndTimePeriod.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TimeAndTimePeriodApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TimeAndTimePeriod/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

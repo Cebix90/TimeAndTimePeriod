@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "tWTUXMqgvb7tjVhxBSh0DXuyC/rlTunafBpEKsC1OHaQlALsemAQRcASMoYZSgSWEjS55thUak1oO8ACsCmqlQ==",
+  "dgSpecHash": "R3YUqBIGRwjaQjILQ9vePybFGl4FRnUqzkp1BHT1bFncq98t4l/7AH3vXMZok6+uyryPZz97CApx9ETvbCcLaQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mateusz\\RiderProjects\\ImplementationTimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj",
+  "projectFilePath": "C:\\Users\\Mateusz\\source\\repos\\TimeAndTimePeriod\\TimeAndTimePeriodUnitTests\\TimeAndTimePeriodUnitTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateusz\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.codecoverage\\17.3.2\\microsoft.codecoverage.17.3.2.nupkg.sha512",
